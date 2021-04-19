@@ -1,0 +1,23 @@
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        n = len(s)
+        ans = 0
+        # mp stores the current index of a character
+        mp = {}
+
+        i = 0
+        # try to extend the range [i, j]
+        for j in range(n):
+            if s[j] in mp:
+                print("mp", mp[s[j]])
+                print("i", i)
+                i = max(mp[s[j]], i)
+            
+            ans = max(ans, j - i + 1)
+            mp[s[j]] = j + 1
+
+        return ans       
+
+solution = Solution()
+
+solution.lengthOfLongestSubstring("pwwkew")
